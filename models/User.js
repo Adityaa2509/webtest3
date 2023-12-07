@@ -15,6 +15,18 @@ const userSchema = new mongoose.Schema({
         type:String,
          require:true,
          
+    },
+    phonenumber:{
+        type:String,
+         require:true
+    },
+    gender:{
+        type:String,
+         require:true
+    },monthlyincome:{
+        type:String,
+         require:true,
+         trim:true,
     }
 })
 
