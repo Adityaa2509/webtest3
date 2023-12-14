@@ -10,7 +10,7 @@ const phoneSchema = new mongoose.Schema({
          require:true,
          
     },
-    isIOS:{
+    isLatest:{
         type:Boolean,
         default:false
     }

@@ -17,17 +17,21 @@ const userSchema = new mongoose.Schema({
          
     },
     phonenumber:{
-        type:String,
-         require:true
+        type:Number,
+         require:true,
+         
     },
-    gender:{
-        type:String,
-         require:true
-    },monthlyincome:{
+    age:{
+        type:Number,
+         require:true,
+         
+    },
+    monthlyincome:{
         type:String,
          require:true,
-         trim:true,
+         
     }
+
 })
 
 userSchema.plugin(passportLocalMongoose);

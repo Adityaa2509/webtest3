@@ -32,17 +32,18 @@
       </nav>
 
      
-    <h2 >All Phones:</h2>
-    <ul>
-        <% allPhones.forEach(user => { %>
-            <li><%= user.phonename %> - <%= user.price %> - <%= user.isIos %></li>
-            <div>
-              <a href="/phones/delete/<%= user.id %>" data-method="DELETE" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-black border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-20">Delete</a>
+    <h2 class="text-center text-blue-700 font-bold text-4xl">All Phones</h2>
+    <div class="w-[900px] h-3 ml-80 ">
+    <ul >
+      <% allPhones.forEach(user => { %>
+        <div class="text-center bg-blue-400 rounded-xl border-black mb-6 mt-4">  
+      
+        <li>Phone Name - <%= user.phonename %><a href="/phones/delete/<%= user.id %>" data-method="DELETE" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-20">Delete</a></li>
+            <li>Price - <%= user.price %><a href="/phones/<%= user.id %>" data-method="GET" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-20">Show</a> </li>
+            <li>isLatest - <%= user.isLatest %><a href="/phones/<%= user.id %>/edit" data-method="GET" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-20">Edit</a></li>
+          </div>  
 
-            <div>
-              <a href="/phones/<%= user.id %>" data-method="Get" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-black border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-20">show</a>
-            </div>
         <% }); %>
-    </ul>
+    </ul></div>
 </body>
 </html>
