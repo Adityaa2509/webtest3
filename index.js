@@ -65,25 +65,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 require('./config/database').connect();
 
 /*************************** **********************/
-//Extra Parts
+
+const phone = require('./models/Phone');
 const AuthRoutes = require('./routes/AuthRoutes');
+const ProductRoutes = require('./routes/ProductRoutes');
 app.use("/api/auth",AuthRoutes);
+app.use("/phones",ProductRoutes);
+
+
+app.get('/login', (req, res) => {
+  res.render('login',{title:"Login Page"}); 
+});
+app.get('/register', (req, res) => {
+res.render('register',{title:"Register Page"}); 
+});
 
 /*************************** **********************/
 app.get("/",(req,resp)=>{
     return resp.json({msg:"Server Running",status:400});
 })
 
-app.get('/login', (req, res) => {
-    res.render('login',{title:"Login Page"}); // Assumes your EJS file is named login.ejs
-});
-
 app.get('/home',protected.isAuthenticated ,async(req, res) => {
     const user = req.user;
-    const allUsers = await User.find();
-    // Render the home page and pass the user information to the view
-    
-    res.render('home', { title: 'HomePage',user: user,allUsers: allUsers});
+    const allPhones = await phone.find();
+    console.log(allPhones);
+    res.render('home', { title: 'HomePage',user: user,allPhones: allPhones});
 });
 
 app.listen(PORT,()=>{

@@ -9,24 +9,22 @@ router.get('/create',(req,resp)=>{
 router.post('/create',async(req,resp)=>{
     try{
         //get data
-        const {phonename,price,isIos} = req.body;
+        const {phonename,price,isLatest} = req.body;
         //check if user already exist
         console.log(phonename);
         console.log(price);
-        console.log(isIos);
-        if(!phonename || !price || !isIos)
+        console.log(isLatest);
+        if(!phonename || !price || !isLatest)
         {
             return resp.render('createphone',{title:"Create Phones"});
         }
         let ac;
-        if(isIos === 'NO')ac = false;
+        if(isLatest === 'NO'||isLatest === 'No'||isLatest === 'nO'||isLatest === 'no')ac = false;
         else ac = true;
-        //create entry for Phone
         const user = await phone.create({
-            phonename,price,isIos:ac
+            phonename,price,isLatest:ac
         })
 
-        //res.render('home',{title:"HomePage"});
         resp.redirect('/home');
         
     }
@@ -57,12 +55,24 @@ router.get('/delete/:id', async (req, res) => {
     }
   });
 
+  router.get('/:id/edit', async (req, res) => {
+    
+    return res.render('editphone',{ title: 'Edit Phone'});
+  });
+
+  router.put('/:id/edit', async (req, res) => {
+    const {phonename,price,isLatest} = req.body;
+    console.log(phonename);
+    console.log(price);
+    console.log(isLatest);
+    return res.render('home');
+  });
+
 router.get('/:id',async(req,resp)=>{
     async (req, res) => {
         const phoneId = req.params.id;
       
         try {
-          // Find the phone by ID and return it
           const phone = await phone.findById(phoneId);
           
           if (phone) {

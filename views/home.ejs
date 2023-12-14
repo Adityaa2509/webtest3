@@ -7,10 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <nav class="flex items-center justify-between flex-wrap bg-blue-400 p-6">
+    <nav class="flex items-center justify-between flex-wrap bg-blue-400 p-6 fixed  top-0">
         <div class="flex items-center flex-shrink-0 text-white mr-6 mr-80">
           
-          <span class="font-semibold text-xl tracking-tight">WEB TEST 3</span>
+          <span class="font-semibold text-xl tracking-tight">WEB END TERM TEST</span>
         </div>
         <div class="block lg:hidden">
           <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -18,13 +18,13 @@
           </button>
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div>
-            <a href="/phones/create" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white  lg:mt-0 mr-20">Add Phone</a>
+          <div class="py-2">
+            <a href="/phones/create" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white lg:mt-0 mr-20 ">Add Phone</a>
           </div>
           <div>
-            <a href="/api/auth/logout" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-20">Logout</a>
+            <a href="/api/auth/logout" class="inline-block ml-80 text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0 mr-20">Logout</a>
           </div>
-          <div>
+          <div class="font-bold">
             <h1>Welcome <%= user.username %>!</h1>
             <p>Email: <%= user.email %></p>
           </div>
@@ -32,11 +32,11 @@
       </nav>
 
      
-    <h2 class="text-center text-blue-700 font-bold text-4xl">All Phones</h2>
+    <h2 class="text-center text-blue-700 font-bold text-4xl mt-40">All Phones</h2>
     <div class="w-[900px] h-3 ml-80 ">
     <ul >
       <% allPhones.forEach(user => { %>
-        <div class="text-center bg-blue-400 rounded-xl border-black mb-4 mt-4 pt-4 pb-4">  
+        <div class="text-center bg-blue-300 rounded-xl border-black mb-4 mt-4 pt-4 pb-4">  
       
         <li>Phone Name - <%= user.phonename %><a href="/phones/delete/<%= user.id %>" data-method="DELETE" class="inline-block ml-20  text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-transparent hover:text-blue-400  hover:bg-white mt-4 lg:mt-0 mr-20 mb-2">Delete</a></li>
             <li>Price - <%= user.price %><a href="/phones/<%= user.id %>" data-method="GET" class="inline-block  text-sm px-4 py-2 leading-none border rounded text-black border-black ml-40 hover:border-transparent hover:text-blue-400 hover:bg-white mt-4 lg:mt-0 mr-20 mb-2">Show</a> </li>
